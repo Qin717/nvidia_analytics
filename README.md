@@ -4,14 +4,12 @@ A comprehensive toolkit for filtering, analyzing, and visualizing NVIDIA Corpora
 
 ![Python](https://img.shields.io/badge/python-3.7+-blue.svg)
 ![Pandas](https://img.shields.io/badge/pandas-1.3%2B-green.svg)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-12%2B-blue.svg)
 
 ## 📋 Overview
 
 This project provides end-to-end tools for patent analytics:
 - **Data Extraction**: Filter NVIDIA patents from massive USPTO datasets (9M+ records)
-- **Data Processing**: Convert TSV to PostgreSQL-compatible CSV format
-- **Analytics**: Pre-written SQL queries for trend analysis, inventor insights, and technology classification
+- **Data Processing**: Convert TSV to CSV format for analysis
 - **Visualization**: Framework for creating Excel dashboards and charts
 
 ## 📊 Project Structure
@@ -35,20 +33,11 @@ nvidia-patent-analytics/
 │   ├── nvidia_patent_abstract.csv
 │   └── README.md
 │
-├── sql_queries/                  # Analysis queries
-│   ├── 01_patent_trend.sql
-│   ├── 02_top_cpc_classes.sql
-│   ├── 03_top_inventors.sql
-│   ├── 04_avg_claims_per_year.sql
-│   ├── 05_inventor_collaboration.sql
-│   └── README.md
-│
 ├── excel_dashboard/              # Visualization outputs
 │   └── README.md
 │
 ├── filter_nvidia_patents.py      # Main filtering script
 ├── convert_tsv_to_csv.py        # TSV to CSV converter
-├── schema.sql                    # PostgreSQL table definitions
 ├── requirements.txt              # Python dependencies
 └── README.md                     # This file
 ```
@@ -59,7 +48,6 @@ nvidia-patent-analytics/
 
 - Python 3.7+
 - pandas library
-- PostgreSQL 12+ (optional, for SQL analysis)
 
 ### Installation
 
@@ -89,35 +77,17 @@ python filter_nvidia_patents.py
 
 **Output:** Extracts ~5,169 NVIDIA patents from 9M+ total patents and saves filtered CSV files to `data_cleaned/`
 
-#### Step 2: (Optional) Convert TSV to CSV for PostgreSQL
+#### Step 2: (Optional) Convert TSV to CSV
 
 ```bash
 python convert_tsv_to_csv.py
 ```
 
-**Output:** Converts TSV files to PostgreSQL-compatible CSV format with proper quoting
+**Output:** Converts TSV files to CSV format with proper quoting
 
-#### Step 3: Import to PostgreSQL (Optional)
+#### Step 3: Create Visualizations
 
-```bash
-# Create tables
-psql -d your_database -f schema.sql
-
-# Import data using pgAdmin or psql \COPY commands
-```
-
-#### Step 4: Run Analytics
-
-Execute queries from `sql_queries/` in PostgreSQL to generate insights:
-- Patent filing trends over time
-- Top technology areas (CPC classifications)
-- Most prolific inventors
-- Patent complexity analysis
-- Collaboration patterns
-
-#### Step 5: Create Visualizations
-
-Export query results and create dashboards in Excel, Tableau, or Python (matplotlib/seaborn).
+Use the filtered data to create dashboards in Excel, Tableau, or Python (matplotlib/seaborn).
 
 ## 📈 Sample Results
 
@@ -131,35 +101,6 @@ Based on October 2025 USPTO data:
 | CPC Classifications | 29,580 |
 | Inventor Records | 16,402 |
 | Unique Inventors | ~3,000+ |
-
-## 📊 Analysis Queries
-
-### 1. Patent Trend Analysis
-Tracks NVIDIA's patent filing activity over time to identify innovation peaks and trends.
-
-### 2. Technology Focus Areas
-Identifies primary CPC technology classes (e.g., G06F - Computing, H01L - Semiconductors, G06T - Image Processing).
-
-### 3. Top Inventors
-Lists the most prolific inventors, useful for identifying key innovators and subject matter experts.
-
-### 4. Patent Complexity
-Analyzes the average number of claims per patent over time as a proxy for patent scope and quality.
-
-### 5. Collaboration Networks
-Examines team sizes and collaboration patterns in NVIDIA's innovation process.
-
-## 🗄️ Database Schema
-
-PostgreSQL tables match USPTO PatentsView schema:
-
-- `g_patent` - Patent records (patent_id, date, title, type, claims)
-- `g_assignee_disambiguated` - Assignee information (organization names)
-- `g_inventor_disambiguated` - Inventor details (names, IDs)
-- `g_cpc_current` - CPC technology classifications
-- `g_patent_abstract` - Patent abstracts
-
-See `schema.sql` for complete DDL statements.
 
 ## 🎨 Visualization Ideas
 
@@ -215,27 +156,15 @@ Be aware of large file sizes when downloading USPTO data:
 
 ## 🐛 Troubleshooting
 
-### PostgreSQL Import Errors
-
-If you encounter "out of memory" errors when importing large CSV files:
-
-```sql
-SET work_mem = '256MB';
-SET maintenance_work_mem = '1GB';
-SET temp_buffers = '256MB';
-```
-
 ### Large File Processing
 
 For machines with limited RAM, consider:
 - Processing files in chunks
-- Using database COPY commands instead of pandas
-- Filtering data before importing to PostgreSQL
+- Filtering data before analysis
 
 ## 🤝 Contributing
 
 Contributions welcome! Areas for improvement:
-- Additional SQL analysis queries
 - Python visualization scripts
 - International patent data integration
 - Machine learning models for patent classification
@@ -250,7 +179,6 @@ MIT License - Free to use for research, commercial, and educational purposes.
 - [USPTO PatentsView](https://patentsview.org/)
 - [CPC Classification System](https://www.cooperativepatentclassification.org/)
 - [Patent Data Visualization Examples](https://patentsview.org/visualizations)
-- [PostgreSQL Documentation](https://www.postgresql.org/docs/)
 
 ## 📧 Contact
 
