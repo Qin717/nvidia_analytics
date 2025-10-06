@@ -25,7 +25,7 @@ nvidia-patent-analytics/
 │   ├── g_patent_abstract.tsv
 │   └── README.md
 │
-├── data_cleaned/                 # Filtered NVIDIA data (not in repo)
+├── data_cleaned/                 # Filtered NVIDIA data (CSV format)
 │   ├── nvidia_patent.csv
 │   ├── nvidia_inventor.csv
 │   ├── nvidia_cpc.csv
@@ -33,11 +33,20 @@ nvidia-patent-analytics/
 │   ├── nvidia_patent_abstract.csv
 │   └── README.md
 │
+├── data_excel/                   # Excel format data files
+│   ├── nvidia_patent.xlsx
+│   ├── nvidia_inventor.xlsx
+│   ├── nvidia_cpc.xlsx
+│   ├── nvidia_assignee.xlsx
+│   ├── nvidia_patent_abstract.xlsx
+│   └── README.md
+│
 ├── excel_dashboard/              # Visualization outputs
 │   └── README.md
 │
 ├── filter_nvidia_patents.py      # Main filtering script
 ├── convert_tsv_to_csv.py        # TSV to CSV converter
+├── convert_csv_to_excel.py      # CSV to Excel converter
 ├── requirements.txt              # Python dependencies
 └── README.md                     # This file
 ```
@@ -85,9 +94,17 @@ python convert_tsv_to_csv.py
 
 **Output:** Converts TSV files to CSV format with proper quoting
 
-#### Step 3: Create Visualizations
+#### Step 3: (Optional) Convert CSV to Excel
 
-Use the filtered data to create dashboards in Excel, Tableau, or Python (matplotlib/seaborn).
+```bash
+python convert_csv_to_excel.py
+```
+
+**Output:** Converts the 5 filtered CSV files to Excel format (.xlsx) and saves them in `data_excel/`
+
+#### Step 4: Create Visualizations
+
+Use the filtered data (CSV or Excel format) to create dashboards in Excel, Tableau, or Python (matplotlib/seaborn).
 
 ## 📈 Sample Results
 

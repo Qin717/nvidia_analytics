@@ -8,6 +8,7 @@
 data_raw/*.tsv
 data_raw/*.csv
 data_cleaned/*.csv
+data_excel/*.xlsx
 
 # Python
 __pycache__/
@@ -72,7 +73,7 @@ Thumbs.db
 # Keep README files in data directories
 !data_raw/README.md
 !data_cleaned/README.md
-!sql_queries/README.md
+!data_excel/README.md
 !excel_dashboard/README.md
 
 # Keep example visualization placeholders (if added)
