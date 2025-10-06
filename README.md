@@ -10,7 +10,6 @@ A comprehensive toolkit for filtering, analyzing, and visualizing NVIDIA Corpora
 This project provides end-to-end tools for patent analytics:
 - **Data Extraction**: Filter NVIDIA patents from massive USPTO datasets (9M+ records)
 - **Data Processing**: Convert TSV to CSV format for analysis
-- **Visualization**: Framework for creating Excel dashboards and charts
 
 ## 📊 Project Structure
 
@@ -33,20 +32,8 @@ nvidia-patent-analytics/
 │   ├── nvidia_patent_abstract.csv
 │   └── README.md
 │
-├── data_excel/                   # Excel format data files
-│   ├── nvidia_patent.xlsx
-│   ├── nvidia_inventor.xlsx
-│   ├── nvidia_cpc.xlsx
-│   ├── nvidia_assignee.xlsx
-│   ├── nvidia_patent_abstract.xlsx
-│   └── README.md
-│
-├── excel_dashboard/              # Visualization outputs
-│   └── README.md
-│
 ├── filter_nvidia_patents.py      # Main filtering script
 ├── convert_tsv_to_csv.py        # TSV to CSV converter
-├── convert_csv_to_excel.py      # CSV to Excel converter
 ├── requirements.txt              # Python dependencies
 └── README.md                     # This file
 ```
@@ -94,17 +81,9 @@ python convert_tsv_to_csv.py
 
 **Output:** Converts TSV files to CSV format with proper quoting
 
-#### Step 3: (Optional) Convert CSV to Excel
+#### Step 3: Analyze the Data
 
-```bash
-python convert_csv_to_excel.py
-```
-
-**Output:** Converts the 5 filtered CSV files to Excel format (.xlsx) and saves them in `data_excel/`
-
-#### Step 4: Create Visualizations
-
-Use the filtered data (CSV or Excel format) to create dashboards in Excel, Tableau, or Python (matplotlib/seaborn).
+Use the filtered CSV data to perform analysis with Python (pandas, matplotlib/seaborn), Excel, Tableau, or other data analysis tools.
 
 ## 📈 Sample Results
 
