@@ -93,7 +93,7 @@ def create_patent_trend_chart():
     plt.tight_layout()
     
     # Save the chart
-    output_file = 'nvidia_patent_trend_chart.png'
+    output_file = 'analysis_report/nvidia_patent_trend_chart.png'
     plt.savefig(output_file, dpi=300, bbox_inches='tight', facecolor='white')
     print(f"✅ Chart saved as '{output_file}'")
     
