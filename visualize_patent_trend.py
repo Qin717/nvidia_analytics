@@ -34,7 +34,7 @@ def create_patent_trend_chart():
     print(f"\nPatent filings by year:\n{patent_counts.to_string(index=False)}\n")
     
     # Create the line chart
-    fig, ax = plt.subplots(figsize=(16, 8))
+    fig, ax = plt.subplots(figsize=(16, 10))
     
     # Plot line with markers
     ax.plot(patent_counts['filing_year'], 
@@ -43,7 +43,7 @@ def create_patent_trend_chart():
             linewidth=2.5,
             markersize=6,
             color='#76B947',  # NVIDIA green
-            markerfacecolor='#4A90E2',
+            markerfacecolor='black',
             markeredgewidth=0)
     
     # Add value labels on each point
@@ -89,8 +89,26 @@ def create_patent_trend_chart():
     ax.set_facecolor('#F8F9FA')
     fig.patch.set_facecolor('white')
     
-    # Adjust layout
-    plt.tight_layout()
+    # Adjust layout to make room for text
+    plt.tight_layout(rect=[0, 0.15, 1, 1])
+    
+    # Add insight text below the chart
+    insight_text = (
+        "Insight:\n\n"
+        "NVIDIA's patent filings rose sharply from fewer than 50 per year in the early 2000s to over 400 by 2024. "
+        "Major surges correspond to key innovation waves — the launch of CUDA (2007), deep learning expansion (2015–2018), "
+        "and the AI hardware boom (2022–2024).\n"
+        "This steady upward trend highlights NVIDIA's long-term commitment to R&D leadership in AI, data centers, and semiconductor design."
+    )
+    
+    fig.text(0.5, 0.08, insight_text,
+            ha='center',
+            va='center',
+            fontsize=11,
+            color='#333333',
+            style='italic',
+            wrap=True,
+            bbox=dict(boxstyle='round,pad=1', facecolor='#F8F9FA', edgecolor='#CCCCCC', alpha=0.8))
     
     # Save the chart
     output_file = 'analysis_report/nvidia_patent_trend_chart.png'
