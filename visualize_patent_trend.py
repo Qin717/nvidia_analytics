@@ -58,7 +58,7 @@ def create_patent_trend_chart():
                    color='#333333')
     
     # Customize the chart
-    ax.set_title('NVIDIA Patent Filings Over Time (1997–2025)',
+    ax.set_title('Q1: NVIDIA Patent Filings Over Time (1997–2025)',
                 fontsize=20,
                 fontweight='bold',
                 color='#76B947',
@@ -111,7 +111,7 @@ def create_patent_trend_chart():
             bbox=dict(boxstyle='round,pad=1', facecolor='#F8F9FA', edgecolor='#CCCCCC', alpha=0.8))
     
     # Save the chart
-    output_file = 'analysis_report/nvidia_patent_trend_chart.png'
+    output_file = 'analysis_report/Q1_nvidia_patent_trend_chart.png'
     plt.savefig(output_file, dpi=300, bbox_inches='tight', facecolor='white')
     print(f"✅ Chart saved as '{output_file}'")
     
